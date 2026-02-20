@@ -1,0 +1,9 @@
+[package]
+name = "yuzu"
+version = "1.0.0"
+edition = "2021"
+description = "Yuzu CLI — control de APIs desde terminal"
+
+[[bin]]
+name = "yuzu"
+path = "src/main.rs"

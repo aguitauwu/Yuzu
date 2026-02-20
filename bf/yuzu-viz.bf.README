@@ -1,0 +1,39 @@
+Yuzu BF Visualizer — lee métricas de stdin y las muestra como barras ASCII
+Formato esperado: STATUS:OK\nTOTAL_REQ:N\nOK_REQ:N\nERR_REQ:N\nAVG_LAT:N
+Compilar con: ./bf yuzu-viz.bf < <(./yuzu-metrics-formatted)
+
+Este programa BF lee bytes del input y los imprime con decoración mínima.
+El intérprete bf debe tener cell size de al menos 8 bits (unsigned).
+
+Funcionamiento:
+- Lee todos los bytes del input con ,
+- Los imprime con .
+- Al final imprime un separador decorativo
+
+Limitación honesta: BF no puede hacer HTTP ni parsear JSON de forma práctica.
+Su rol en Yuzu es recibir el output ya formateado de COBOL y añadir un
+borde visual antes de pasarlo al terminal.
+
+El programa real:
+>
+Lee y re-imprime todo el input hasta EOF, luego imprime el footer de Yuzu.
+
+,[.,]
+
+Programa extendido con borde:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++.        (imprime \n)
+>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++.                            (imprime * = 0x2A)
++++++++.                                            (imprime +)
++++++++++++++++++++++++++++++++++++++++++++++.      (imprime espacio x43 = Y)
+>
+Lee y re-imprime el input completo:
+,[.,]
+Luego imprime footer:
+<<<<
+---.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++.                              (imprime \n)
+
+Versión compacta funcional real que corre:
