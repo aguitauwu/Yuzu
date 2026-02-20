@@ -1,5 +1,5 @@
 // ============================================================
-// Yuzu TUI Monitor - ARM64 Android (Bionic/Termux)
+// Yuzu Monitor - ARM64 Android (Bionic/Termux)
 // Compilar:
 //   as -o yuzu-tui-arm64-android.o yuzu-tui-arm64-android.s
 //   ld --pie -dynamic-linker /system/bin/linker64 \
